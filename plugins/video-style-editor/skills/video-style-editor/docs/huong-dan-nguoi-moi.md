@@ -47,6 +47,25 @@ không phải tải lên. Claude chỉ đọc lời thoại đã được chép 
 
 Không bật thì Claude không chạy được công cụ dựng video.
 
+## Bước 3b - Cài Claude in Chrome (không bắt buộc, nên có)
+
+Claude in Chrome là tiện ích cho trình duyệt Chrome, giúp Claude thao tác web thay bạn: tải hiệu ứng âm thanh khi bị
+chặn, mở video mẫu, nhờ Gemini nghe và chấm video. Không cài vẫn dựng video bình thường. Chỉ chạy trên **Google Chrome**
+máy tính (không dùng được trên Edge, Cốc Cốc hay điện thoại), cần gói Pro trở lên.
+
+1. Mở Chrome, vào [claude.ai/chrome](https://claude.ai/chrome) (hoặc tìm "Claude" của Anthropic trên Chrome Web Store)
+   → bấm **Add to Chrome**.
+2. Đăng nhập đúng tài khoản Claude Pro khi được hỏi, cấp các quyền tiện ích xin.
+3. Ghim tiện ích: bấm biểu tượng mảnh ghép ở góc trên phải Chrome → bấm hình đinh ghim cạnh **Claude**.
+4. Nối với ứng dụng Claude trên máy tính: bấm tên bạn (góc dưới trái) → **Settings** → **Customize** → **Connectors** →
+   tìm **Claude in Chrome** → **Configure** → bật lên.
+5. Muốn Claude dùng Chrome thay cho trình duyệt có sẵn trong Cowork: **Settings** → **Cowork** → **Preferred browser**
+   → chọn Chrome.
+
+Khi dùng: giữ Chrome mở; đăng nhập sẵn các trang cần dùng (Gemini, Google Drive…) - Claude không nhập mật khẩu thay bạn.
+Lần đầu Claude vào một trang, tiện ích có thể hỏi xin phép: đọc rồi bấm cho phép nếu đúng việc bạn nhờ. Claude báo không
+kết nối được Chrome: mở Chrome, kiểm tra tiện ích đã đăng nhập cùng tài khoản Claude, rồi nhắn Claude thử lại.
+
 ## Bước 4 - Cài plugin video-style-editor
 
 Chọn **một** trong hai cách. Cách A tốt hơn vì plugin tự cập nhật khi có bản mới.
@@ -235,6 +254,7 @@ phép.
 ---
 
 Tài liệu tham khảo chính thức của Claude (tiếng Anh): [Bắt đầu với Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork) ·
-[Cài plugin](https://claude.com/docs/cowork/guide/plugins) · [Dùng skill](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+[Cài plugin](https://claude.com/docs/cowork/guide/plugins) · [Dùng skill](https://support.claude.com/en/articles/12512180-use-skills-in-claude) ·
+[Claude in Chrome](https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome).
 Tìm hiểu sâu hơn về skill này: `docs/personalize.md` (cách Claude học khẩu vị của bạn), `docs/workflow.md` (quy trình
 chi tiết).
