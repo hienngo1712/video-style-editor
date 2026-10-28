@@ -1,0 +1,22 @@
+# Style: trend / aesthetic clip on a trending sound. Learned Oct 2026 from source k1 (15.9M followers, median
+# ~1.1M): 13.4M black-and-white street walk, 4.8M painting outdoors, 673K car selfie.
+name: trend-aesthetic
+aspect: "9:16"
+duration_s: [15, 22]
+fits: launches, new store / new menu reveal, team fashion, behind-the-scenes mood clips
+structure:
+  hook: the most beautiful frame first, trending sound from 0 s; no talking, no text or one short line
+  body: 1-6 shots cut on the beat; a transformation or a reveal if possible
+  payoff: loop-friendly ending (last frame matches the first)
+pacing:
+  avg_shot_s: [3, 20]
+  cuts_per_min: [0, 16]
+captions:
+  mode: none (style captions false) or one lowercase line
+emphasis: strong grade - tint "bw" or film; slow push-in zoom 1.0 -> 1.08
+audio:
+  source: >-
+    the trending sound itself (references -7 to -14 LUFS). Add it in TikTok when posting (rights);
+    export here without music or with a placeholder bed.
+  sfx: none
+note: performance depends on persona and posting the sound early in its trend - editing alone cannot copy that.

@@ -1,0 +1,31 @@
+# Style: comedic review / talk-to-camera. Learned Oct 2026 from source k1 (8.3M followers, median ~1.2M views):
+# 6.9M US-vs-Vietnam fast food comparison, 6.6M "how my wife uses a new phone", 1.2M news explainer.
+name: review-xam
+aspect: "9:16"
+duration_s: [90, 250]
+fits: one host reviewing a place, dish, product or service; restaurant and F&B reviews; brand integrations
+structure:
+  hook: >-
+    line 1 = a personal claim + a comparison or test question ("Tôi đi Mỹ nhiều rồi mà chưa cho các bạn ăn
+    đặc sản Mỹ: KFC ở Mỹ có ngon hơn ở Việt Nam không?") or a relatable observation about someone close
+    ("Cách vợ tôi dùng điện thoại mới khi chưa dán màn"). The question is answered only at the end.
+  body: >-
+    arrive / order / taste or use / react, each step on location; honest small complaints keep it believable;
+    price and speed said out loud ("400 nghìn", "chưa kịp lấy nước đã có đồ").
+  payoff: verdict that answers the hook question, with one joke
+  brand: product or service shown in use inside the test, never a read script
+pacing:
+  avg_shot_s: [2.5, 6]
+  cuts_per_min: [10, 24]
+captions:
+  mode: karaoke or none; a persistent headline at the top (plan.title) carries the topic
+emphasis:
+  reaction_pip: >-
+    host facecam in a small box top-right over b-roll or screens while he comments
+    (piece.image with a video file, x 0.78, y 0.18, w 0.32)
+  title: 'plan.title, e.g. {"text": "KFC MỸ vs VIỆT NAM", "from": 0, "to": 6}'
+audio:
+  source: host voice, -11 LUFS; light music bed optional (plan.music, -26)
+  sfx: sparse - ding_600 for the verdict, bonus_2060 for prices, failtone_2876 for a letdown
+note: the median video (news explainer, single static shot) did 1.2M - the persona carries; the hits add a test
+  with a clear question and on-location footage.

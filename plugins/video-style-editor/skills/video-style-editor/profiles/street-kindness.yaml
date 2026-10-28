@@ -1,0 +1,27 @@
+# Style: street-vendor kindness series. Learned Oct 2026 from source k1 (4.7M followers, median ~784K):
+# 4.8M buying a child vendor's whole basket, 3.8M follow-up episode, 772K "order with ChatGPT" challenge.
+name: street-kindness
+aspect: "9:16"
+duration_s: [150, 300]
+fits: F&B and small-business stories, customer stories, CSR, "a day selling with ..." series
+structure:
+  hook: >-
+    the series name as big text from frame 1 + the object of the episode ("GIỎ XÁCH BÁNH CAM" over the clear
+    bag), first line asks the price or who the vendor is
+  body: >-
+    price -> the vendor's story in their own words (age, school, family, hours, daily sales) -> the host buys
+    / helps / shows how viewers can find them -> crowd or follow-up proof
+  payoff: emotional - the vendor's reaction, school, a later visit ("nhờ con mà cô hết khổ")
+  series: >-
+    numbered or named episodes with a fixed title formula; follow-up episodes revisit earlier vendors and do
+    as well as new ones (3.8M)
+pacing:
+  avg_shot_s: [2.5, 3.6]
+  cuts_per_min: [16, 23]
+  cuts_first_5s: [3, 4]
+captions:
+  mode: karaoke; keyword yellow for prices and ages; series title as plan.title for the first 3-5 s
+audio:
+  source: "street voices, heavy denoise on traffic (denoise: true), voice -11 LUFS; soft piano/ukulele bed"
+  sfx: almost none - the story carries it; bonus_2060 at the sale moment at most
+note: a gimmick challenge from the same creator (772K) did 6x less than the kindness episodes.

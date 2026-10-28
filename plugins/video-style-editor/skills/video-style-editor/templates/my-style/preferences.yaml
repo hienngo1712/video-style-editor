@@ -1,0 +1,45 @@
+# My editing style - your taste, written down so Claude edits the way YOU like.
+#
+# Lives in <VSE_HOME>/my-style/ (your data folder, not inside the plugin): plugin updates never overwrite it.
+# Claude reads this file before every edit and proposes changes after your feedback (you approve them).
+# Priority when rendering: built-in defaults < this file < the `style` block of one plan.
+# Every key is optional - delete what you do not care about. Share your style: copy this folder to a teammate.
+
+owner: ""                 # whose taste this is (optional)
+default_profile: story-vlog   # house style from profiles/ when you do not name one
+language: vi              # captions / transcript language
+onboarded: ""             # date of the first-use interview (docs/onboarding.md); empty = not interviewed yet
+
+# Same keys as plan.style (docs/edit-plan.md). These become the defaults of every video you render.
+style:
+  caption_size: 76          # px on 1080x1920
+  caption_mode: karaoke     # karaoke (3 words, active word yellow) | static (whole line, sitcom)
+  caption_lag: 0.2          # s the caption waits AFTER the word is heard (pro editors: ~0.2)
+  caption_reveal: true      # words appear as they are said
+  caption_margin_v: 470     # px from the bottom (TikTok safe zone 380-700)
+  caption_highlight: "&H0000D4FF&"   # ASS colour (BGR) of the active word / big text - yellow
+  avoid_faces: true         # move text off faces
+  motion: auto              # slow push-in/out + punch-in on big text | off
+  look: clean               # clean | warm | cool | film | none | path/to/look.cube
+  color_match: true         # even out exposure clip to clip
+  denoise: light            # speech clean-up: light | strong | false
+  lufs: -12                 # final loudness
+
+sfx:
+  favourite: []             # SFX names you like, used first (assets/sfx/manifest.json)
+  banned: []                # never use these (lint error)
+  max_repeat: 2             # same SFX at most N times per video (lint warning)
+  default_gain: -12         # dB; -16 subtle, -8 only for the single biggest moment
+
+pacing:
+  cut_fillers: true         # run `vse.py tighten` before rendering
+  tighten_gap: 0.45         # pauses longer than this (s) are shortened
+  target_length_s: [45, 90] # what your videos usually run
+
+# Caption spelling you always want: what the speech recogniser writes -> what it should say (lower case left side).
+words: {}
+  # "erik": "edit"
+
+# Plain-language rules learned from your feedback. Claude follows every line; newest at the bottom.
+rules: []
+  # - "Không thêm thẻ 'tập sau' ở cuối video."

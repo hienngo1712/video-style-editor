@@ -1,0 +1,22 @@
+{
+ "name": "xin-ve-som",
+ "profile": "office-sitcom",
+ "format": "skit",
+ "style": {"caption_mode": "static"},
+ "speakers": {"NV1": "#7CFF4F", "Sếp": "#FF3B3B", "NV2": "#FFFFFF"},
+ "music": {"file": "raw/bgm-comedy.mp3", "gain": -26, "duck": true},
+ "pieces": [
+  {"clip": "IMG_0101.MOV", "a": 0.4, "b": 2.1, "speaker": "NV1", "fix": "ANH ƠI EM XIN *VỀ+SỚM NHÁ"},
+  {"clip": "IMG_0101.MOV", "a": 2.3, "b": 4.0, "zoom": 1.1, "speaker": "Sếp", "fix": "MẤY GIỜ MÀ ĐÃ *VỀ"},
+  {"clip": "IMG_0101.MOV", "a": 4.0, "b": 4.9, "zoom": 1.25, "tint": "pink", "style": "none",
+   "sfx": [{"name": "crow_316", "at": 0.2, "gain": -14}]},
+  {"clip": "IMG_0102.MOV", "a": 1.0, "b": 5.2, "speaker": "NV1", "fix": "EM LÀM XONG HẾT VIỆC RỒI MÀ ANH",
+   "image": {"file": "raw/checklist.png", "x": 0.5, "y": 0.3, "w": 0.55, "at": 1.2, "dur": 2.0},
+   "sfx": [{"name": "msgpop_2354", "at": 1.2, "gain": -14}]},
+  {"clip": "IMG_0102.MOV", "a": 5.4, "b": 7.8, "zoom": 1.1, "speaker": "Sếp", "fix": "THẾ THÌ LÀM THÊM VIỆC *CỦA+ANH",
+   "sfx": [{"name": "wrong_946", "at": 2.3, "gain": -14}]},
+  {"clip": "IMG_0103.MOV", "a": 0.2, "b": 3.6, "speaker": "NV2", "fix": "ANH ƠI EM CŨNG XONG RỒI", "big": "17:59",
+   "sfx": [{"name": "scratch_704", "at": 0.0, "gain": -14}, {"name": "rimshot_579", "at": 3.3, "gain": -14}]}
+ ],
+ "_notes": "Illustrative only - clip names are placeholders. Hook = request in line 1; reaction punch-in with pink tint + awkward crow; proof image; refusal SFX; twist with a third character; ends on the punchline."
+}

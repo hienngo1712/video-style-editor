@@ -1,0 +1,188 @@
+[
+ {
+  "file": "sfx_whoosh_1489.mp3",
+  "use": "transition (soft)",
+  "title": "Air woosh",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1489/1489-preview.mp3"
+ },
+ {
+  "file": "sfx_whoosh_1490.mp3",
+  "use": "transition (fast)",
+  "title": "Fast whoosh transition",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3"
+ },
+ {
+  "file": "sfx_whoosh_1492.mp3",
+  "use": "teaser -> main transition",
+  "title": "Cinematic whoosh fast transition",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3"
+ },
+ {
+  "file": "sfx_pop_2358.mp3",
+  "use": "big text pops in",
+  "title": "Long pop",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"
+ },
+ {
+  "file": "sfx_pop_2364.mp3",
+  "use": "repeated labels (floor 1..6), sticker",
+  "title": "Hard pop click",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2364/2364-preview.mp3"
+ },
+ {
+  "file": "sfx_pop_3005.mp3",
+  "use": "light pop + whoosh",
+  "title": "Explainer video pops whoosh light pop",
+  "url": "https://assets.mixkit.co/active_storage/sfx/3005/3005-preview.mp3"
+ },
+ {
+  "file": "sfx_impact_1143.mp3",
+  "use": "big dramatic hit (teaser)",
+  "title": "Cinematic whoosh deep impact",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1143/1143-preview.mp3"
+ },
+ {
+  "file": "sfx_impact_2150.mp3",
+  "use": "short hit on a dramatic word",
+  "title": "Impact of a blow",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2150/2150-preview.mp3"
+ },
+ {
+  "file": "sfx_impact_2182.mp3",
+  "use": "dry hit",
+  "title": "Wood hard hit",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2182/2182-preview.mp3"
+ },
+ {
+  "file": "sfx_ding_600.mp3",
+  "use": "reveal / good news",
+  "title": "Achievement bell",
+  "url": "https://assets.mixkit.co/active_storage/sfx/600/600-preview.mp3"
+ },
+ {
+  "file": "sfx_ding_1791.mp3",
+  "use": "AVOID - recording is almost silent",
+  "title": "Cooking bell ding",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1791/1791-preview.mp3"
+ },
+ {
+  "file": "sfx_boing_2894.mp3",
+  "use": "funny bounce (sitting, falling)",
+  "title": "Boing hit sound",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2894/2894-preview.mp3"
+ },
+ {
+  "file": "sfx_giggle_2885.mp3",
+  "use": "funny moment",
+  "title": "Funny Giggling",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2885/2885-preview.mp3"
+ },
+ {
+  "file": "sfx_trombone_744.mp3",
+  "use": "fail / disappointment",
+  "title": "Trombone disappoint",
+  "url": "https://assets.mixkit.co/active_storage/sfx/744/744-preview.mp3"
+ },
+ {
+  "file": "sfx_failpiano_473.mp3",
+  "use": "awkward / fail",
+  "title": "Cartoon failure piano",
+  "url": "https://assets.mixkit.co/active_storage/sfx/473/473-preview.mp3"
+ },
+ {
+  "file": "sfx_paper_2380.mp3",
+  "use": "paper-tear transition",
+  "title": "Paper quick movement",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2380/2380-preview.mp3"
+ },
+ {
+  "file": "sfx_paper_2996.mp3",
+  "use": "paper crumple",
+  "title": "Quick paper crumple sound",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2996/2996-preview.mp3"
+ },
+ {
+  "file": "sfx_squeak_1014.mp3",
+  "use": "awkward / silly squeak (quack-like)",
+  "title": "Rubber duck squeak",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1014/1014-preview.mp3"
+ },
+ {
+  "file": "sfx_crow_316.mp3",
+  "use": "awkward silence meme (caw)",
+  "title": "Crow short crowing",
+  "url": "https://assets.mixkit.co/active_storage/sfx/316/316-preview.mp3"
+ },
+ {
+  "file": "sfx_cricket_1780.mp3",
+  "use": "awkward silence (single chirp)",
+  "title": "Single cricket screech",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1780/1780-preview.mp3"
+ },
+ {
+  "file": "sfx_ticktock_1045.mp3",
+  "use": "time-bound challenge, waiting",
+  "title": "Tick tock clock timer",
+  "url": "https://assets.mixkit.co/active_storage/sfx/1045/1045-preview.mp3"
+ },
+ {
+  "file": "sfx_meow_91.mp3",
+  "use": "cute / sulking reaction",
+  "title": "Cartoon little cat meow",
+  "url": "https://assets.mixkit.co/active_storage/sfx/91/91-preview.mp3"
+ },
+ {
+  "file": "sfx_scratch_704.mp3",
+  "use": "record scratch - \"wait, what?\" stop",
+  "title": "Vinyl stop fast scratch",
+  "url": "https://assets.mixkit.co/active_storage/sfx/704/704-preview.mp3"
+ },
+ {
+  "file": "sfx_laughtrack_424.mp3",
+  "use": "sitcom laugh track after a punchline",
+  "title": "Crowd laugh",
+  "url": "https://assets.mixkit.co/active_storage/sfx/424/424-preview.mp3"
+ },
+ {
+  "file": "sfx_rimshot_579.mp3",
+  "use": "ba-dum-tss joke accent",
+  "title": "Drum joke accent",
+  "url": "https://assets.mixkit.co/active_storage/sfx/579/579-preview.mp3"
+ },
+ {
+  "file": "sfx_fallwhistle_395.mp3",
+  "use": "something going down / failure",
+  "title": "Cartoon falling whistle",
+  "url": "https://assets.mixkit.co/active_storage/sfx/395/395-preview.mp3"
+ },
+ {
+  "file": "sfx_failtone_2876.mp3",
+  "use": "small failure",
+  "title": "Funny fail low tone",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2876/2876-preview.mp3"
+ },
+ {
+  "file": "sfx_msgpop_2354.mp3",
+  "use": "chat message / phone screen on screen",
+  "title": "Message pop alert",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3"
+ },
+ {
+  "file": "sfx_correct_2870.mp3",
+  "use": "right answer, idea, approval",
+  "title": "Correct answer tone",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2870/2870-preview.mp3"
+ },
+ {
+  "file": "sfx_wrong_946.mp3",
+  "use": "wrong answer, rejected request",
+  "title": "Wrong answer fail notification",
+  "url": "https://assets.mixkit.co/active_storage/sfx/946/946-preview.mp3"
+ },
+ {
+  "file": "sfx_bonus_2060.mp3",
+  "use": "money, salary, bonus, reward",
+  "title": "Winning an extra bonus",
+  "url": "https://assets.mixkit.co/active_storage/sfx/2060/2060-preview.mp3"
+ }
+]

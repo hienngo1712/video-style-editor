@@ -1,0 +1,78 @@
+# Style: office sitcom skit. Learned Oct 2026 from 16 samples, sources k1 + k2 (8 each: top, middle, low by
+# views). Sample files: references/office-sitcom/videos/ - evidence and caveats in docs/viral-formula.md.
+name: office-sitcom
+aspect: "9:16"
+resolution: [1080, 1920]
+duration_s: [25, 170]   # organic hits: 33-50 s skits AND 100-160 s challenge/diary; brand skits 100-130 s
+
+formats:                # pick one per video and say which in the report
+  skit:                 # k2 10.5M / 6.3M / 5.7M: 33-49 s
+    length_s: [25, 50]
+    shape: >-
+      premise line, then 2-3 escalations, then twist or punchline, then cut (no outro)
+  challenge_or_diary:   # k1 6.1M (work until the milk tea melts), 1.2M (work diary)
+    length_s: [90, 170]
+    shape: >-
+      rule stated in line 1 and on screen; time stamps or progress checks as big text
+      ("9H - 10H", "2 TIẾNG SAU") every 15-25 s; a recurring gag; second challenge or reversal at the end
+  brand_skit:           # k1 56.9M (food-delivery app), k2 53.3M (AI assistant app), both paid partnerships
+    length_s: [100, 130]
+    shape: >-
+      office conflict for the first 35 %; the product solves it at 35-45 % (app screenshot overlay, logo pop);
+      2-3 product beats told as dialogue, never read like an ad; callback punchline that is NOT about the product
+
+structure:
+  hook: >-
+    0-2 s. The conflict or the rule is the FIRST spoken line, captioned from frame 1. Examples:
+    "Cho chúng mày ngủ lại công ty", "Em xin về sớm nhá", "Thử thách làm việc đến khi cốc trà sữa tan",
+    "Lương 3 triệu nhưng không dám biếu bố 2 triệu". No greeting, no logo, no teaser montage.
+  escalation: >-
+    every 8-15 s a new beat (excuse, counter-move, a third person joins). Mark beats with a reaction punch-in
+    (zoom 1.25 + tint pink, 0.6-1.2 s) and one meme SFX.
+  payoff: >-
+    twist, reversal of power (employee outsmarts boss or boss exposes employee) or a callback. End on it.
+  cta: >-
+    optional, inside the skit as a line ("zoom follow", "follow anh đi"), never an end card.
+  cast: >-
+    recurring characters with fixed roles (strict or stingy boss, cheeky employee, slow colleague).
+    Keep names consistent; a series beats one-offs.
+
+pacing:
+  avg_shot_s: [1.8, 2.6]     # 13 of 16 videos; a talking-head / greenscreen format can be 7 s
+  cuts_per_min: [22, 33]
+  cuts_first_5s: [2, 3]
+  jump_cut_zoom: [1.0, 1.1]  # alternate inside a take; reaction punch-in 1.25
+  max_silence_s: 0.25        # overlapping dialogue is fine (sitcom rhythm)
+
+captions:
+  mode: static               # render style caption_mode static: whole line, not word-by-word karaoke
+  words_per_line: 3
+  lines: 2
+  case: upper
+  font: Be Vietnam Pro ExtraBold, thick black outline
+  color_by_speaker: true     # plan.speakers, e.g. {"NV1": "#7CFF4F", "Sếp": "#FF3B3B", "NV2": "#FFFFFF"}
+  keyword: "yellow #FFD400 - prefix the word with * in fix (money, time, the rule, the insult)"
+  position: lower-middle (MarginV about 640 of 1920); top when faces are low
+
+emphasis:
+  reaction_punch_in: zoom 1.25 + tint pink on the listener's face right after an outrageous line
+  big_text: the rule, time stamps, money ("3 TRIỆU", "9H - 10H", "2 TIẾNG SAU")
+  image_overlay: app screens, product, receipts (piece.image) for brand_skit and proof moments
+  transitions: plain cuts; a whoosh only for time jumps
+
+audio:
+  source: original dialogue, normalised to -11 LUFS
+  music_bed: >-
+    a light comedic loop under all dialogue (plan.music, gain -24 to -28 dB, ducked). All 16 references have
+    one: the sound-event tagger hears "Music" in 50-100 % of windows. Use music the user has rights to.
+  sfx:                       # names from assets/sfx/manifest.json; gain is after peak-normalisation
+    punch_in_reaction: boing_2894 -16 | squeak_1014 -16 | meow_91 -18 (cute sulk)
+    awkward_silence: crow_316 -14 | cricket_1780 -16 (in a real pause after a bad excuse)
+    wait_what: scratch_704 -14 at the cut into the reaction
+    punchline: rimshot_579 -14 or laughtrack_424 -18 (at most once per video)
+    rule_or_timer: ticktock_1045 -20 under challenge time stamps
+    money_and_requests: bonus_2060 -14 (salary, bonus) | wrong_946 -14 (refused) | correct_2870 -14 (good idea)
+    phone_chat_on_screen: msgpop_2354 -14 when an app or chat image pops in
+    failure: failpiano_473 -16 | failtone_2876 -16 | fallwhistle_395 -16 (after the line, never over it)
+    density: one SFX every 4-8 s; each marks a beat; never on the key word
+  capcut_names: see docs/capcut-guide.md for CapCut search terms of the same sounds and effects

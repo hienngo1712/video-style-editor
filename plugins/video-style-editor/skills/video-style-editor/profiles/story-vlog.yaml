@@ -1,0 +1,63 @@
+# Style: storytelling vlog of a small-business owner (1 host, teaser, no music). Learned Oct 2026 from
+# 8 samples of source k1 (F&B owner: events, kitchen operations, sourcing, expansion).
+name: story-vlog
+aspect: "9:16"
+resolution: [1080, 1920]
+duration_s: [45, 600]          # references: 2:41-9:50; short-form jobs: 45-90 s
+
+structure:
+  - teaser: 5-17 s. The 2-6 most dramatic / emotional / funny lines, lifted from later in the footage.
+      Big 2-line yellow captions. This is what separated the 3.7M-view videos from the 22K one.
+  - transition: paper-tear wipe (or white flash) + whoosh from teaser into the story.
+  - opening: greeting + place + time ("Xin chào anh em... bây giờ là 7:36...") if it exists in the footage.
+  - body: chronological. Keep only lines that move the story; cut hesitations ("ờ", restarts).
+  - payoff: twist / reveal / punchline. End on it. Do NOT add a "next episode" card unless asked.
+
+pacing:
+  avg_shot_s: 2-4              # references 1.9-3.6 s; talking-head sections too
+  jump_cut_zoom: [1.0, 1.12]   # alternate on every cut inside one continuous take
+  max_silence_s: 0.2           # almost no pauses in the references
+  broll_s: 1.5-2.5             # montage shots without speech
+
+captions:
+  chunk_words: 3               # 2-3 words on screen
+  case: upper
+  font: Be Vietnam Pro ExtraBold
+  color: white, black outline 7
+  active_word: yellow (#FFD400)   # karaoke-style highlight of the word being spoken
+  position: "mid-lower; move to top when action happens in the lower half (caption_pos: top)"
+  teaser: Be Vietnam Pro Black, all yellow, 2 lines, up to 9 words
+  censor_profanity: "*"        # "CH*T", "Đ*T"
+
+emphasis:
+  big_text: giant yellow word for money, numbers, floor/room labels, the key word of a dramatic line (pop-in)
+  shake_speedlines: dramatic moments (shouting, "toang", "sập rồi")
+  red_circle_sticker: point at a detail on screen
+  privacy: blur faces of staff / bystanders who are not the host
+
+audio:
+  source: original voice, no background music bed
+  loudness_lufs: -11           # references -9.7 to -15; render.py normalises speech, then adds SFX
+  voice:                       # settings that took a listener score from 6.0 to 8.8-9.5 (rev 4, Oct 2026)
+    quiet_take: vol +4         # far from the phone / big room; check `lint` level hints
+    noisy_quiet_take: vol +3 + denoise   # boosting also lifts room noise - never boost more than +5
+    outdoor_wind: vol -2 + denoise
+    broll_ambience: vol -6     # style none pieces
+    cut_rule: cut in a pause (inspect -> pauses); drop stray words at a cut ("Đây, phòng..." restarts),
+              never cut inside the last word - it is usually still audible ~0.1-0.2 s after the ASR end
+    choppy: two pieces of one sentence that sound choppy -> merge them into one piece
+  sfx:                         # names: assets/sfx/manifest.json; gain is after peak-normalisation; at = peak time
+    teaser_open: impact_1143 -17 at 0.0
+    teaser_reaction: boing_2894 -17 in the pause right after the funny line
+    dramatic_word: impact_2150 -12 at the word onset + fx shake/speedlines   # "TOANG", "sập rồi"
+    teaser_to_body: paper_2380 -11 + whoosh_1492 -13 at 0.05, transition paper; pop_2358 -14 with big text at 0.35
+    big_text: pop_2358 -14 at big_at
+    labels_series: pop_2364 -12/-13 at 0.0-0.05, before the first word   # TẦNG 1..6 - same sound every time
+    context_cue: ding_600 -18 under the word it illustrates   # "thang máy" -> elevator ding
+    whip_pan: whoosh_1490 -15 at 0.0 of the piece after the pan
+    reveal_end: ding_600 -11 right after the last word + speedlines
+    funny: boing_2894 -18 on the action (sit, fall); trombone_744 -18 exasperation;
+           failpiano_473 -16 AFTER the letdown line, never over it (extend the piece into the pause)
+    montage: whoosh_1489 -19 / whoosh_1490 -16 on b-roll cuts, every 2nd cut at most
+    avoid: ding_1791 (file is almost silent)
+    density: about 1 SFX every 3-5 s; under the voice, never on a key word (lint warns)

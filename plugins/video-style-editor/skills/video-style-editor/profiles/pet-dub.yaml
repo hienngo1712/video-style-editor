@@ -1,0 +1,23 @@
+# Style: pet clips with a dubbed human voice or a trending song. Learned Oct 2026 from source k1 (2.7M followers,
+# median ~830K): 12.5M cat with a dyed tail on a trending song, 5.4M dubbed "evening show", 923K dubbed interview.
+name: pet-dub
+aspect: "9:16"
+duration_s: [20, 40]
+fits: office pets, shop cats/dogs, mascots; any footage where an animal reacts
+structure:
+  hook: a visual oddity in frame 1 (costume, colour, strange pose); no intro
+  body: >-
+    either a trending song carries it (2-4 shots) or a voice-over gives the animals human lines like a
+    talk show or an interview (piece.audio = the recorded voice file); the joke is the mismatch between a
+    serious human script and animal behaviour
+  payoff: the animal "answers" with a perfect reaction shot
+pacing:
+  avg_shot_s: [2.5, 7.5]
+  cuts_per_min: [6, 21]
+captions:
+  mode: karaoke for dubbed lines; none for song-only clips
+audio:
+  source: >-
+    song-driven clips are loud (references -6 to -13 LUFS); dubbed clips: voice -11 LUFS + light bed.
+    Use songs the user has rights to (TikTok's in-app sounds are added on TikTok, not here).
+  sfx: meow_91 -18, boing_2894 -16, rimshot_579 -14

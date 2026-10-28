@@ -1,0 +1,23 @@
+# Style: scripted mini-drama / parody episodes. Learned Oct 2026 from source k1 (1.2M followers, median ~249K):
+# 3.5M fairy-tale parody with a payment-card integration, 3.5M "girl from nowhere", 248K music-video parody.
+name: mini-drama
+aspect: "9:16"
+duration_s: [90, 120]
+fits: scripted brand stories, customer-service scenarios, parodies of films / fairy tales, episodic series
+structure:
+  hook: in-character line that sets an absurd situation in 2 s ("Vì sao con khóc?" from a fairy godmother)
+  body: 3-5 scenes, each a reversal; costumes and locations change fast
+  payoff: twist; brand appears as the magic solution inside the story when sponsored
+  series: episode numbers (Tập 1, 2, ...) in the title; recurring characters
+pacing:
+  avg_shot_s: [1.6, 2.2]
+  cuts_per_min: [27, 37]
+captions:
+  mode: film subtitles - small white sentence case at the bottom (style caption_size 54, caption_margin_v 160)
+  title: series tag at the top (plan.title), small
+emphasis: >-
+  cinematic grade (tint "warm" or an ffmpeg curves filter), shallow-depth shots, no meme stickers
+audio:
+  source: dialogue -11 LUFS + cinematic music bed (-22); stingers instead of meme SFX
+  sfx: impact_1143 -16 on reveals, whoosh_1492 -16 on scene jumps
+note: the song-parody without dialogue did 14x less than the story episodes.
