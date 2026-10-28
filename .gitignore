@@ -1,0 +1,29 @@
+# personal data never goes in the repo: it lives in VSE_HOME (vse-workspace/)
+vse-workspace/
+workspace/
+.vse-data/
+**/work/
+**/output/
+**/raw/
+__pycache__/
+*.pyc
+
+# media / models / downloaded assets
+*.mp4
+*.mov
+*.MOV
+*.webm
+*.mkv
+*.wav
+*.m4a
+*.mp3
+*.heic
+*.HEIC
+*.onnx
+*.rnnn
+*.tar.bz2
+*.ttf
+*.cube
+
+# built skill zip (attach to a GitHub release instead)
+dist/
