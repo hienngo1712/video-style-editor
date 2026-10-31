@@ -78,7 +78,7 @@ Chọn **một** trong hai cách. Cách A tốt hơn vì plugin tự cập nhậ
 3. Trong danh sách plugin hiện ra, tìm **video-style-editor** → bấm **Install**.
 4. Bấm vào marketplace vừa thêm, bật **Sync automatically** để luôn nhận bản mới.
 
-**Cách B - cài từ file zip (khi được gửi file `video-style-editor-skill.zip`)**
+**Cách B - cài từ file zip (tải file `video-style-editor-skill.zip` ở https://github.com/hienngo1712/video-style-editor/releases/latest)**
 
 1. **Customize** → **Skills** → bấm dấu **+** → **Create skill** → **Upload a skill**.
 2. Chọn file `video-style-editor-skill.zip` (không cần giải nén).

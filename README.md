@@ -34,7 +34,8 @@ bản thô ─► analyze ─► [Claude viết plan theo style + my-style] ─�
 
 **Không qua GitHub (chỉ skill):** Settings → Capabilities → bật *Code execution and file creation*; rồi Customize →
 Skills → **+** → Create skill → Upload a skill → chọn
-`dist/video-style-editor-skill.zip` (tạo bằng `python tools/build_skill_zip.py`).
+`video-style-editor-skill.zip` tải ở [Releases](https://github.com/hienngo1712/video-style-editor/releases/latest)
+(tự đóng gói: `python tools/build_skill_zip.py`). Cách này không có lệnh `/` tắt và không tự cập nhật.
 
 **Claude Code:**
 ```
@@ -118,7 +119,7 @@ CHANGELOG.md
     **Marketplaces** → `hien-video-tools` → **Enable auto-update**. Lấy ngay: cùng chỗ đó chọn **Update marketplace**
     (hoặc `claude plugin update video-style-editor@hien-video-tools`), rồi `/reload-plugins` hoặc mở phiên mới.
 - Sửa code trong `plugins/video-style-editor/skills/video-style-editor/`, ghi vào `CHANGELOG.md`,
-  chạy `python tools/build_skill_zip.py`, push.
+  chạy `python tools/build_skill_zip.py`, push; bản lớn thì tạo Release trên GitHub và đính kèm file zip.
 - Quy tắc đúng cho **mọi** người → `SKILL.md` mục 3 / `docs/editing-craft.md`. Khẩu vị **của một người** → my-style
   của người đó, không đưa vào repo.
 - Thêm style: video mẫu vào `<VSE_HOME>/references/<style>/videos/` tên `<style>__<format>__<nội-dung>__<view>.mp4`
