@@ -12,6 +12,7 @@
   python vse.py reference REFDIR                  analyse reference videos to learn a new style
   python vse.py library  REFROOT                  rebuild the sample index (INDEX.md / INDEX.json / _hooks.jpg)
   python vse.py overlays                           (re)build paper / speedline overlays
+  python vse.py reel     setup|list|words|frame|build ...   designed reel layouts (explainer, split-screen, trial-reels...)
 
 Environment: VSE_HOME = data folder (models, fonts, SFX), VSE_BUDGET = seconds per command
 (set 150 in Claude Cowork). Exit code 3 = time budget reached, progress saved - run the same command again.
@@ -24,7 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 STEPS = {'doctor': 'doctor.py', 'prepare': 'prepare.py', 'transcribe': 'transcribe.py', 'events': 'audio_events.py',
          'inspect': 'inspect_clip.py', 'lint': 'planlint.py', 'render': 'render.py', 'check': 'check.py',
          'reference': 'analyze_reference.py', 'library': 'ref_index.py', 'overlays': 'make_overlays.py', 'setup': 'setup_assets.py',
-         'tighten': 'tighten.py', 'style': 'mystyle.py'}
+         'tighten': 'tighten.py', 'style': 'mystyle.py', 'reel': 'reels_cli.py'}
 
 
 def run(script, args):

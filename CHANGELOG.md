@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-31
+- **6 bố cục reels** (`vse.py reel`, `reels/`, `docs/reels.md`) từ claude-editing-skills của Artem Novitckii (MIT):
+  trial-reels, behind-the-person, explainer, split-screen, ranking-list, storytelling. Chuyển sang chạy trong máy và
+  tiếng Việt: chép lời bằng model tiếng Việt cục bộ thay Groq (không cần key), font có dấu, nhãn mặc định tiếng Việt,
+  HDR iPhone → SDR, bộ dựng HyperFrames + Chromium cài từ npm (mạng Cowork chặn GitHub/Google storage), render chia
+  đoạn 2 s và tách người theo đoạn để chạy tiếp được sau giới hạn 3 phút, không xoá file trong thư mục chia sẻ.
+  Đã dựng thử cả 6 kiểu trên clip tiếng Việt.
+
 ## 2026-10-28
 - **Beginner guide** (`docs/huong-dan-nguoi-moi.md`, Vietnamese): install the Claude desktop app on a Pro plan, enable
   code execution, add the plugin (marketplace or skill zip), connect a folder, then copy-paste prompts for setup, the

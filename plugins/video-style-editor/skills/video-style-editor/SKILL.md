@@ -1,6 +1,6 @@
 ---
 name: video-style-editor
-description: Edit raw phone footage into a finished 9:16 vlog in a learned style (Vietnamese storytelling vlog by default) - transcribe, plan teaser/cuts/captions/effects/SFX, render with FFmpeg, QA, optional listening review with Gemini - and learn the user's own taste from their feedback (my-style). Use when asked to edit or re-edit videos from raw clips, to learn an editing style from reference videos, or to record / apply editing feedback and preferences.
+description: Edit raw phone footage into a finished 9:16 vlog in a learned style (Vietnamese storytelling vlog by default) - transcribe, plan teaser/cuts/captions/effects/SFX, render with FFmpeg, QA, optional listening review with Gemini - and learn the user's own taste from their feedback (my-style). Also 6 designed reel layouts (trial-reels, behind-the-person, explainer, split-screen, ranking-list, storytelling) that turn one 3-8 s talking-head stretch into an animated 9:16 reel. Use when asked to edit or re-edit videos from raw clips, to learn an editing style from reference videos, or to record / apply editing feedback and preferences.
 ---
 
 # Video style editor
@@ -88,6 +88,18 @@ Outputs go to `PROJECT/work`, `PROJECT/plans`, `PROJECT/output` only - keep the 
    says "always / lần sau cứ thế", PROPOSE the change to `my-style/preferences.yaml` (a `style`/`sfx`/`pacing`/`words`
    value or one concrete line in `rules`) and write it only after the user agrees. Skill-wide lessons (true for every
    user) belong in section 3 below / `docs/editing-craft.md` instead.
+
+## 1b. Designed reel layouts (`vse.py reel`)
+Six layouts from claude-editing-skills by Artem Novitckii (MIT, `reels/NOTICE.md`), adapted to Vietnamese and to
+running locally: overview and routing in `docs/reels.md`, each layout's steps / spec / taste in
+`reels/<layout>/GUIDE.md` (read it before writing a spec). Use one when the user names it or asks for that look
+("2 bản để test", "chữ sau lưng người", "chia đôi màn hình", "bảng xếp hạng", "3 ảnh + tiêu đề", "trước / sau").
+- Flow: `$V reel words <clip>` -> pick ONE point (3-8 s, whole breath groups) -> `$V reel frame <clip> <t> <job>/work/reels/frame.jpg`
+  (eyes / chin y) -> spec in `<job>/plans/<clip>.<layout>.json` -> `$V reel build <layout> <spec>` (exit 3 = run again)
+  -> look at `<job>/output/<clip>.<layout>.sheet.jpg` (red = covered by the app UI) -> fix -> hand over.
+- Visuals land on the spoken word (anchor times to words). Never invent numbers, comments or names. Titles in proper
+  Vietnamese; captions come from the local ASR (fix spellings with `"fix"` or my-style `words`).
+- First build in a session installs the runtime by itself (`$V reel setup`, npm, ~30 s).
 
 ## 2. Learning a new style
 Sample library (REFROOT, default `$VSE_HOME/references`): `REFROOT/<style>/videos/<style>__<format>__<content>__<views>.<ext>` - never a person's or

@@ -1,1 +1,12 @@
-{"name":"hien-video-tools","owner":{"name":"Hiển Ngô"},"metadata":{"description":"Claude plugins for automated video editing"},"plugins":[{"name":"video-style-editor","source":"./plugins/video-style-editor","description":"Edit raw phone footage into a finished 9:16 vlog in a learned style (teaser, jump cuts, karaoke captions, effects, SFX)."}]}
+{
+  "name": "hien-video-tools",
+  "owner": {"name": "Hiển Ngô"},
+  "metadata": {"description": "Claude plugins for automated video editing"},
+  "plugins": [
+    {
+      "name": "video-style-editor",
+      "source": "./plugins/video-style-editor",
+      "description": "Edit raw phone footage into a finished 9:16 vlog in a learned style (teaser, jump cuts, karaoke captions, effects, SFX)."
+    }
+  ]
+}

@@ -6,6 +6,9 @@ Plugin + skill cho Claude: **tự động dựng video dọc 9:16 từ bản th�
 - **Bộ khung chung, ai cũng dùng được ngay**: chép lời tiếng Việt, dựng câu chuyện + teaser, cắt nhảy, phụ đề karaoke,
   chữ lớn, SFX, nhạc nền, lọc ồn, cân màu, zoom có keyframe, xuất MP4 - với các quy tắc rút từ khoá CapCut 16 bài và
   góp ý của editor chuyên nghiệp (`docs/editing-craft.md`).
+- **6 bố cục reels thiết kế sẵn** (`vse.py reel`, `docs/reels.md`): trial-reels (3 bản để đăng thử), chữ/đồ hoạ
+  phía sau người, explainer trước → sau, chia đôi màn hình, bảng xếp hạng S-F, 3 thẻ hình + tiêu đề - dựa trên bộ
+  skill của Artem Novitckii (MIT), chạy trong máy, chữ tiếng Việt có dấu.
 - **7 style có sẵn** (`profiles/`): vlog kể chuyện, sitcom văn phòng, review, đường phố, mini drama, thú cưng lồng
   tiếng, video mood - và tự tạo style mới từ video mẫu bạn thích.
 - **my-style - phần của riêng bạn**: thông số mặc định, SFX thích / cấm, chính tả phụ đề, luật riêng và nhật ký góp
@@ -79,6 +82,7 @@ $V tighten  video-1 plans/v1.json plans/v1-t.json # cắt ờ/à/ừ + khoảng 
 $V lint     video-1 plans/v1-t.json               # dòng thời gian + lỗi plan
 $V render   video-1 plans/v1-t.json               # dựng (chỉ dựng lại đoạn thay đổi)
 $V check    video-1 plans/v1-t.json               # ảnh kiểm tra, độ to, độ sáng, phụ đề chồng
+$V reel build explainer projects/video-1/plans/IMG_1.explainer.json   # bố cục reels (docs/reels.md)
 ```
 Người mới: `docs/huong-dan-nguoi-moi.md` · quy trình chi tiết: `docs/workflow.md` · định dạng plan: `docs/edit-plan.md` · tuỳ chỉnh: `docs/personalize.md` ·
 phỏng vấn lần đầu: `docs/onboarding.md`.
@@ -93,6 +97,7 @@ plugins/video-style-editor/
     ├── SKILL.md                           hướng dẫn cho Claude
     ├── scripts/                           vse.py (1 lệnh cho mọi bước) + các bước: prepare, transcribe, audio_events,
     │                                      tighten, planlint, render, faces, check, mystyle, doctor, setup_assets…
+    ├── reels/                             6 bố cục reels (kit HyperFrames + từng bố cục: build.py, GUIDE.md)
     ├── profiles/                          7 style - thêm style = thêm 1 file
     ├── templates/my-style/                mẫu preferences.yaml + journal.md cho người dùng mới
     ├── docs/                              huong-dan-nguoi-moi (cho người dùng), workflow, edit-plan, personalize,
@@ -116,6 +121,8 @@ CHANGELOG.md
 
 ## Bản quyền & lưu ý
 
+- Thư mục `reels/` dựa trên [claude-editing-skills](https://github.com/artemnovitckii/claude-editing-skills)
+  của Artem Novitckii (MIT) - chi tiết `reels/NOTICE.md`; model tách người RobustVideoMatting (GPL-3.0) tải khi dùng.
 - Code: MIT. Nhận dạng giọng nói / âm thanh: [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) (Apache-2.0).
   Lọc ồn: model RNNoise "leavened-quisling" từ [rnnoise-models](https://github.com/GregorR/rnnoise-models)
   (README: dữ liệu model không thuộc bản quyền). Dò mặt: YuNet từ [opencv_zoo](https://github.com/opencv/opencv_zoo)

@@ -2,7 +2,7 @@
 
 Tài liệu này dành cho người **chưa dùng AI bao giờ**. Bạn chỉ cần biết cài phần mềm trên máy tính và đã có tài khoản
 **Claude Pro** (hoặc gói cao hơn). Làm lần lượt từ bước 1 đến bước 9, khoảng **30-45 phút** cho lần đầu (phần lớn là
-chờ tải). Từ video thứ hai trở đi chỉ cần bước 7-9.
+chờ tải). Từ video thứ hai trở đi chỉ cần bước 8-9.
 
 > Giao diện Claude chủ yếu bằng tiếng Anh. Trong tài liệu, tên nút được giữ nguyên tiếng Anh và **in đậm**, kèm giải
 > thích tiếng Việt. Giao diện có thể thay đổi một chút theo phiên bản - nếu không thấy đúng tên nút, tìm nút gần giống.
@@ -218,6 +218,8 @@ Mỗi góp ý được ghi vào `my-style/journal.md`; góp ý lặp lại sẽ 
 | Đặt quy tắc lâu dài | `Ghi quy tắc vào my-style: không bao giờ dùng tiếng cười giả.` |
 | Sửa chính tả cố định | `Ghi vào my-style: luôn viết "phong bvb" thành "Phong BVB".` |
 | Học style mới từ video mẫu | `Học phong cách từ các video trong vse-workspace/references/<tên-style>/ và tạo style mới tên <tên-style>.` |
+| Reel thiết kế sẵn (đồ hoạ chuyển động) | `Dựng clip <tên> kiểu explainer` - các kiểu: trial-reels, behind-the-person, explainer, split-screen, ranking-list, storytelling (xem `docs/reels.md`) |
+| 3 bản để đăng thử | `Làm trial-reels 3 bản từ đoạn mở đầu clip <tên>` |
 | Làm tiếp trong CapCut | `Xuất thêm file phụ đề để tôi chỉnh tiếp trong CapCut.` |
 | Claude dừng giữa chừng | `tiếp tục` |
 
