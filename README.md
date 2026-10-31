@@ -111,8 +111,12 @@ CHANGELOG.md
 
 ## Cập nhật & phát triển
 
-- Plugin không ghi `version` → mỗi lần push lên `main` là một bản mới; người dùng có auto-update tự nhận.
-  Thủ công: Claude Code `/plugin marketplace update hien-video-tools` rồi `/reload-plugins`.
+- Plugin không ghi `version` → mỗi lần push lên `main` là một bản mới. Người dùng nhận bản mới:
+  - **Cowork / Claude desktop:** bật **Sync automatically** cho marketplace một lần (Customize → Plugins → marketplace)
+    → tự cập nhật; mở cuộc trò chuyện mới là dùng bản mới. Lấy ngay: **Check for updates**.
+  - **Claude Code:** marketplace bên thứ ba mặc định **tắt** tự cập nhật. Bật một lần: `/plugin` → tab
+    **Marketplaces** → `hien-video-tools` → **Enable auto-update**. Lấy ngay: cùng chỗ đó chọn **Update marketplace**
+    (hoặc `claude plugin update video-style-editor@hien-video-tools`), rồi `/reload-plugins` hoặc mở phiên mới.
 - Sửa code trong `plugins/video-style-editor/skills/video-style-editor/`, ghi vào `CHANGELOG.md`,
   chạy `python tools/build_skill_zip.py`, push.
 - Quy tắc đúng cho **mọi** người → `SKILL.md` mục 3 / `docs/editing-craft.md`. Khẩu vị **của một người** → my-style
