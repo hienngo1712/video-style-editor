@@ -4,7 +4,7 @@
   python vse.py doctor [--fix]                    check / install Python packages, models, fonts, SFX
   python vse.py analyze  PROJECT                  prepare + transcribe + events (resumable)
   python vse.py inspect  PROJECT CLIP [S E]       words + loudness strip + pauses of one clip
-  python vse.py style    init|show|note|learn|stats     your personal style: preferences + feedback journal
+  python vse.py style    init|show|note|learn|stats|rule|word|set|approve   your personal style (my-style)
   python vse.py tighten  PROJECT plans/X.json [OUT] cut fillers (ờ, ừm, lone à/ừ) + long pauses -> plans/X-tight.json
   python vse.py lint     PROJECT plans/X.json     timeline + plan errors/warnings (before rendering)
   python vse.py render   PROJECT plans/X.json [all|pieces|final|ass|review]   (default all, resumable)

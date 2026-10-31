@@ -64,6 +64,7 @@ def lint(project, plan_file, show_timeline=True):
     clips = load_json(os.path.join(P['work'], 'clips.json'), {})
     sfx_names = {s['file'][4:-4] for s in load_json(SFX_MANIFEST, [])}
     errors, warns, rows, levels = [], [], [], []
+    said = []   # (piece index, tag, style, words) - to catch a line kept twice (two takes of the same sentence)
     pieces = plan['pieces']
     T = 0.0
 
@@ -82,6 +83,7 @@ def lint(project, plan_file, show_timeline=True):
             errors.append(f'{tag}: bad a/b {a}-{b} (clip is {cd}s)')
         ws = asr_words(TR, p)
         style = p.get('style', 'normal')
+        said.append((i, tag, style, [w['w'].lower() for w in ws]))
         if p.get('fix'):
             n = len(p['fix'].split())
             if n != len(ws):
@@ -157,6 +159,19 @@ def lint(project, plan_file, show_timeline=True):
     if m and not os.path.exists(find_file(P['root'], m['file'])):
         errors.append(f"music file not found: {m['file']}")
     # pro-editor feedback (10/2026): repeated SFX sound monotonous; transitions only at the start feel flat
+    # the same 4+ words in two body pieces = two takes of one line (teaser lines repeat on purpose)
+    seen = {}
+    for i, tag, style, ws in said:
+        if style == 'teaser':
+            continue
+        for k in range(len(ws) - 3):
+            g = ' '.join(ws[k:k + 4])
+            j = seen.get(g)
+            if j is not None and j[0] != i and not (j[0] == i - 1 and cont(pieces[j[0]], pieces[i])):
+                warns.append(f'{tag}: says "{g}..." again (also {j[1]}) - two takes of one line? keep the cleanest '
+                             'full take and tell the user which one you dropped')
+                break
+            seen.setdefault(g, (i, tag))
     from collections import Counter
     my = load_prefs().get('sfx') or {}
     mx = my.get('max_repeat', 2)

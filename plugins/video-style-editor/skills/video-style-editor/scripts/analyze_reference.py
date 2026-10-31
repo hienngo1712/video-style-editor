@@ -4,8 +4,11 @@
 usage: python scripts/analyze_reference.py REFDIR
 REFDIR/videos/*.(mp4|webm|mov) ->
   REFDIR/analysis/<name>/cuts.txt, audio.log, frames/ (1 every 2 s), sheet_NN.jpg (8x3 = 48 s each),
-                         hook.jpg (first 3 s at 3 fps - the hook decides retention)
-  REFDIR/analysis/summary.json   duration, cuts, avg shot, cuts in the first 5 s, silences, LUFS
+                         hook.jpg (first 3 s at 3 fps - the hook decides retention), first10.jpg (0-10 s, 2 fps),
+                         onsets.txt (sharp sound hits = likely SFX)
+  REFDIR/analysis/summary.json   duration, cuts, avg shot, cuts in the first 5 s, first cut, motion in the first
+                                 second, silences, LUFS, sound hits, share of cuts that carry a sound hit
+  REFDIR/notes.txt (optional, written by the user): what they love / would skip in these videos - read it first.
   REFDIR/work/audio/<name>.wav + work/clips.json, so `vse.py transcribe REFDIR` / `events REFDIR` work too.
 Name files <style>__<format>__<content>__<views>.mp4 (no person names) - see ref_index.py / vse.py library.
 Claude then reads sheets + hook + summary + transcript and writes profiles/<style>.yaml.
@@ -18,7 +21,30 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import out_of_time, save_json, stop_for_now  # noqa: E402
+from common import frame_db, load_wav, out_of_time, save_json, stop_for_now  # noqa: E402
+
+
+def onsets(wav):
+    """times of sharp sound hits (a 50 ms frame 9+ dB above the loudest of the 4 before it) - SFX, claps, slams"""
+    try:
+        db = frame_db(load_wav(wav))
+    except Exception:  # noqa: BLE001
+        return []
+    out, last = [], -9.0
+    for i in range(4, len(db)):
+        if db[i] - max(db[i - 4:i]) > 9 and db[i] > -35 and i * 0.05 - last > 0.3:
+            out.append(round(i * 0.05, 2))
+            last = i * 0.05
+    return out
+
+
+def hook_motion(mkv):
+    """mean frame-to-frame change in the first second (0 = still picture, 10+ = lots of movement)"""
+    r = subprocess.run(['ffmpeg', '-v', 'info', '-t', '1', '-i', mkv, '-an', '-vf',
+                        'scale=72:128,tblend=all_mode=difference,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=-',
+                        '-f', 'null', '-'], capture_output=True, text=True)
+    ys = [float(x) for x in re.findall(r'YAVG=([\d.]+)', r.stdout)]
+    return round(sum(ys) / len(ys), 1) if ys else None
 
 def probe_dur(path):
     """duration in s; browser recordings (webm) often have none in the header -> decode to find it"""
@@ -35,6 +61,11 @@ def probe_dur(path):
 
 
 REF = os.path.abspath(sys.argv[1])
+if os.path.exists(os.path.join(REF, 'notes.txt')):
+    print('notes.txt (the user\'s own words - read before writing the style):')
+    print(open(os.path.join(REF, 'notes.txt'), encoding='utf-8', errors='replace').read().strip()[:2000])
+else:
+    print('no notes.txt: ask the user what they love / would skip in these videos and save it as REFDIR/notes.txt')
 SUM = os.path.join(REF, 'analysis', 'summary.json')
 summary = json.load(open(SUM)) if os.path.exists(SUM) else {}
 WAV = os.path.join(REF, 'work', 'audio')
@@ -81,15 +112,24 @@ for v in sorted(glob.glob(os.path.join(REF, 'videos', '*'))):
                         '-vf', 'scale=144:256,tile=8x3:padding=2', os.path.join(D, f'sheet_{k // 24 + 1:02d}.jpg')])
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-t', '3', '-i', mkv, '-vf', 'fps=3,scale=216:384,tile=9x1:padding=2',
                     '-frames:v', '1', os.path.join(D, 'hook.jpg')])
+    subprocess.run(['ffmpeg', '-y', '-v', 'error', '-t', '10', '-i', mkv, '-vf', 'fps=2,scale=144:256,tile=10x2:padding=2',
+                    '-frames:v', '1', os.path.join(D, 'first10.jpg')])
     wav = os.path.join(WAV, name + '.wav')
     if not os.path.exists(wav):
         subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', mkv, '-vn', '-ac', '1', '-ar', '16000', '-c:a', 'pcm_s16le',
                         wav], check=True)
+    hits = onsets(wav)
+    with open(os.path.join(D, 'onsets.txt'), 'w') as f:
+        f.write('\n'.join(f'{h:.2f}' for h in hits))
+    on_cut = sum(1 for c in merged if any(abs(c - h) <= 0.15 for h in hits))
     summary[name] = {'dur': round(dur, 1), 'cuts': len(merged),
                      'avg_shot_s': round(dur / (len(merged) + 1), 2),
                      'cuts_first_5s': sum(1 for c in merged if c < 5),
                      'cuts_per_min': round(len(merged) / max(dur, 1) * 60, 1),
-                     'silences': a.count('silence_end'), 'lufs': float(lufs[-1]) if lufs else None}
+                     'first_cut_s': round(merged[0], 2) if merged else None,
+                     'hook_motion': hook_motion(mkv),
+                     'silences': a.count('silence_end'), 'lufs': float(lufs[-1]) if lufs else None,
+                     'sound_hits': len(hits), 'cuts_with_hit': round(on_cut / len(merged), 2) if merged else None}
     print(name, summary[name], flush=True)
     save_json(summary, SUM)
     done_now += 1

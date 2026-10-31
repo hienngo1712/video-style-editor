@@ -71,9 +71,15 @@ Outputs go to `PROJECT/work`, `PROJECT/plans`, `PROJECT/output` only - keep the 
    voiced gaps with no word (an "ờ" the ASR dropped, or a missed word): check them with `inspect`, `--sounds` cuts
    them. Lint and render the `-t` plan.
 5. **Lint** - `$V lint PROJECT plans/<name>.json` prints the timeline and must show 0 errors.
-   Read every warning: clipped cut, level hint (`vol`), SFX on a word, same zoom on a jump cut.
+   Read every warning: clipped cut, level hint (`vol`), SFX on a word, same zoom on a jump cut, a line said twice
+   (keep the cleanest full take; tell the user which take you dropped).
+   **Storyboard before the full render** (always for a user's first videos, and whenever they asked to review):
+   from the lint timeline, show 5-10 short rows - time, what is said, what is on screen (layout, big text, image,
+   zoom/move), SFX - and wait for OK. Cheaper than re-rendering a whole video.
 6. **Render** - `$V render PROJECT plans/<name>.json` (pieces -> final mix -> 540p review copy). Only pieces
-   whose picture/audio changed re-render, so iterate freely.
+   whose picture/audio changed re-render, so iterate freely. **Versions:** once the user has seen a render, every
+   revision is a new plan (`<name>-v2.json`, `-v3`...) so it renders to a new file - never overwrite a version the
+   user saw (reels: a new spec / `"out"` with `-v2`).
 7. **Check** - `$V check PROJECT plans/<name>.json`, then look at `work/check/<name>_sheet.jpg`
    (captions readable, big text, framing). Fix and render again.
 8. **Listen** - you cannot hear. If Claude in Chrome and the user's Gemini are available, follow
@@ -86,7 +92,11 @@ Outputs go to `PROJECT/work`, `PROJECT/plans`, `PROJECT/output` only - keep the 
    `$V style note "TEXT" --project P --video NAME --at 0:12 --tag captions --by user|editor|gemini --fix "what you did"`.
    If the user corrected a plan, `$V style learn PROJECT plans/A.json plans/B.json`. When a note repeats (2x) or the user
    says "always / lần sau cứ thế", PROPOSE the change to `my-style/preferences.yaml` (a `style`/`sfx`/`pacing`/`words`
-   value or one concrete line in `rules`) and write it only after the user agrees. Skill-wide lessons (true for every
+   value or one concrete line in `rules`) and write it only after the user agrees: `$V style rule "TEXT" --why "REASON"`
+   (dated). If the note changes a default (size, position, colour, level), set that value too, so the next video
+   gets it without asking. When the user approves a version ("ok / ưng rồi / đăng được"):
+   `$V style approve output/<name>.mp4 --project P --why "what made it right"` - `style show` then lists it with its
+   contact sheet; open the sheets before a similar edit. Skill-wide lessons (true for every
    user) belong in section 3 below / `docs/editing-craft.md` instead.
 
 ## 1b. Designed reel layouts (`vse.py reel`)
@@ -112,6 +122,17 @@ New style: take top, middle and low view videos of each source, name them as abo
 `$V library REFROOT` -> study hooks, sheets, summary, transcripts and what separates high from low views ->
 write `profiles/<style>.yaml`, add a row to `docs/styles.md` and the evidence (source codes, not names) to
 `docs/viral-formula.md`. Only use videos the user may download; never commit them.
+Doing it well (one creator / one format per style, 5-10 recent videos, odd ones left out):
+- Read `REFROOT/<style>/notes.txt` first - the user's own words on what they love / would skip (no file: ask, save it).
+- Measure, per video: where the speaker sits and how big, each layout and when it switches; caption font, size,
+  weight, colour, position, words at once, which words are picked out; every on-screen element (cards, screenshots,
+  stickers, numbers) and how it comes in / goes out; shot length, zooms and when; the first 3 s on their own
+  (`hook.jpg`, `first10.jpg`, `first_cut_s`, `hook_motion`); where sound hits land vs cuts and moves
+  (`onsets.txt`, `cuts_with_hit`). Where videos disagree, follow the majority and note the exceptions.
+- Show the user 3 contact sheets (and what you read from them) before writing the profile, so they can say
+  "yes, that's the look". Name the style after how it LOOKS (`split-card`, `boxed-caption-vlog`), never after a
+  person. Finish by telling the user the 3 things that make it different from a generic edit.
+- In the profile, every rule cites its evidence (video code + second).
 
 ## 3. Rules learned from feedback (keep adding)
 - No "next episode" card at the end unless asked (keep it if the creator's own narration says it).

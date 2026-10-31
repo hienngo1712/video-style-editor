@@ -1,6 +1,11 @@
 # Changelog
 
 ## 2026-10-31
+- Học từ "editing studio" của Artem Novitckii: storyboard duyệt trước khi dựng cả video; `lint` cảnh báo một câu bị
+  giữ hai lần (hai lần nói); mỗi bản sửa là `-v2`, `-v3` (không ghi đè); `style rule --why` ghi kèm ngày + lý do;
+  `style approve` lưu bản được duyệt (ảnh tóm tắt + lý do) làm chuẩn, `style show` liệt kê; học style kỹ hơn:
+  `notes.txt` của người dùng, `first10.jpg`, `first_cut_s`, `hook_motion`, tiếng hiệu ứng trùng điểm cắt
+  (`onsets.txt`, `cuts_with_hit`), xem 3 ảnh trước khi viết style, đặt tên theo kiểu nhìn.
 - Lệnh gọi nhanh `/trial-reels`, `/behind-the-person`, `/explainer`, `/split-screen`, `/ranking-list`, `/storytelling`:
   6 skill lối tắt trong plugin (`plugins/video-style-editor/skills/<tên>/SKILL.md`) trỏ về skill chính.
   Hướng dẫn người mới thêm phần dùng nâng cao (lệnh `/`, 6 kiểu reels, my-style, Gemini, cập nhật).

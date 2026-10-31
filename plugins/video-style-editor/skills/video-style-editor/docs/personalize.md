@@ -40,8 +40,13 @@ thử 15 giây đầu để chỉnh trước - nhờ vậy video đầu tiên đ
    `vse.py style learn PROJECT plans/A.json plans/B.json` → liệt kê thay đổi (cắt sát hơn, SFX nhỏ hơn bao nhiêu dB,
    chữ nào bị sửa chính tả, zoom/chuyển cảnh thêm bớt) và **đề xuất** dòng cần thêm vào `preferences.yaml`.
 5. **Biến góp ý thành quy tắc** - khi một góp ý lặp lại 2 lần, hoặc bạn nói "lần sau cứ thế", Claude đề xuất sửa
-   `preferences.yaml` (thông số) hoặc thêm một dòng `rules:` - **bạn đồng ý thì mới ghi**. Từ video sau, việc đó tự đúng.
-6. **Xem mình hay bị góp ý gì** - `vse.py style stats`: chủ đề nhiều góp ý nhất là chỗ nên cải thiện trước.
+   `preferences.yaml` (thông số) hoặc thêm một dòng `rules:` - **bạn đồng ý thì mới ghi**:
+   `vse.py style rule "..." --why "lý do"` (tự ghi kèm ngày). Góp ý đổi một thông số mặc định (cỡ chữ, vị trí, màu,
+   độ to) thì sửa luôn thông số đó, video sau tự đúng.
+6. **Lưu bản bạn ưng làm chuẩn** - bạn nói "ưng rồi / đăng được": `vse.py style approve output/x.mp4 --why "..."` lưu
+   ảnh tóm tắt của video vào `my-style/approved/` kèm lý do; trước khi dựng video tương tự Claude mở lại để so.
+7. **Không ghi đè bản bạn đã xem** - mỗi lần sửa ra bản mới `-v2`, `-v3`, bản cũ còn nguyên để so sánh.
+8. **Xem mình hay bị góp ý gì** - `vse.py style stats`: chủ đề nhiều góp ý nhất là chỗ nên cải thiện trước.
 
 Góp ý bằng video (quay màn hình nói): Claude chuyển lời thành chữ bằng model nhận giọng của skill, xem khung hình,
 rồi ghi từng ý bằng `style note`.

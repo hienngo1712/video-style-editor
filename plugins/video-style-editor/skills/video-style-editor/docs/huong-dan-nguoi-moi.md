@@ -285,7 +285,17 @@ Tất cả nằm trong `vse-workspace/my-style/`, áp dụng cho cả video dài
 | Sửa chính tả cố định | `Ghi vào my-style: luôn viết "phong bvb" thành "Phong BVB"` |
 | Cho Claude học từ bản bạn tự sửa | `Tôi đã sửa plan video-1, học từ chỗ tôi sửa và đề xuất quy tắc` |
 | Học phong cách từ video mẫu | Bỏ 3-10 video mẫu vào `vse-workspace/references/<tên-style>/videos/`, nhắn `Học phong cách từ references/<tên-style> và tạo style mới` |
+| Lưu bản ưng ý làm chuẩn | `Bản video-1-v3 này ưng rồi, lưu làm chuẩn: chữ hiện đúng lúc, nhịp vừa` |
+| Ghi luật kèm lý do | `Ghi quy tắc: không dùng tiếng cười giả, lý do: nghe rẻ tiền` |
 | Làm lại từ đầu | `Phỏng vấn lại tôi về phong cách` |
+
+- Trước khi dựng cả video, Claude cho bạn duyệt **storyboard** (mỗi đoạn: lời nói, trên màn hình có gì, tiếng hiệu
+  ứng). Duyệt ở bước này rẻ hơn nhiều so với sửa cả video.
+- Mỗi lần sửa, Claude ra bản mới `-v2`, `-v3`, không ghi đè bản bạn đã xem.
+- Nếu bạn lỡ nói một câu hai lần, Claude giữ lần nói trọn vẹn nhất và báo bạn đã bỏ lần nào.
+- **Học style từ video mẫu cho tốt:** chỉ lấy một người / một dạng video mỗi style, 5-10 video gần đây. Viết thêm
+  file `notes.txt` trong thư mục style đó, ghi bằng lời của bạn thích gì / không thích gì ("phụ đề nhỏ, nhẹ nhàng").
+  Claude sẽ cho bạn xem 3 ảnh tóm tắt trước khi viết style và đặt tên style theo kiểu nhìn, không theo tên người.
 
 ## Nhờ Gemini nghe và chấm video
 

@@ -12,7 +12,10 @@ usage:
   python scripts/mystyle.py stats                      which topics get the most feedback (where to improve first)
   python scripts/mystyle.py set KEY VALUE              one preference, dotted key, YAML value
                                                        (style.caption_size 88 | sfx.banned '["laughtrack_424"]' | onboarded 2026-10-28)
-  python scripts/mystyle.py rule "TEXT"                add a plain-language rule
+  python scripts/mystyle.py rule "TEXT" [--why "REASON"]   add a plain-language rule (dated, with the reason)
+  python scripts/mystyle.py approve VIDEO [--project P] [--why "what made it right"]
+                                                       the user approved this video: keep a contact sheet of it in
+                                                       my-style/approved/ as a reference of "right" for next time
   python scripts/mystyle.py word "asr spelling" "Correct"   caption spelling you always want
   python scripts/mystyle.py brief                      path + text of brief.md (the user's portrait in words)
 
@@ -75,12 +78,17 @@ def set_pref(key, value):
     print(f'{key}: {json.dumps(old, ensure_ascii=False, default=str)} -> {json.dumps(v, ensure_ascii=False, default=str)}')
 
 
-def add_rule(text):
+def add_rule(text, why=None):
     _need()
     d = load_prefs()
     rules = d.get('rules') or []
-    if text not in rules:
+    core = text.strip()
+    if not any(str(r).split('  (')[0].strip() == core for r in rules):
+        stamp = datetime.date.today().isoformat() + (f'; lý do: {why}' if why else '')
+        text = f'{core}  ({stamp})'
         rules.append(text)
+        _log({'date': datetime.date.today().isoformat(), 'text': 'new rule: ' + core, 'tag': 'other', 'by': 'user',
+              'fix': why})
     d['rules'] = rules
     save_prefs(d)
     print(f'rule {len(rules)}: {text}')
@@ -94,6 +102,40 @@ def add_word(asr, correct):
     d['words'] = w
     save_prefs(d)
     print(f'caption spelling: "{asr.lower()}" -> "{correct}"')
+
+
+def approve(video, project=None, why=None):
+    """keep a small contact sheet of an approved video + why it was right (my-style/approved/)"""
+    import subprocess
+    _need()
+    if not os.path.exists(video):
+        raise SystemExit(f'video not found: {video}')
+    out_dir = os.path.join(MYSTYLE, 'approved')
+    os.makedirs(out_dir, exist_ok=True)
+    day = datetime.date.today().isoformat()
+    name = os.path.splitext(os.path.basename(video))[0]
+    sheet = os.path.join(out_dir, f'{day}_{name}.jpg')
+    dur = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', video],
+                               capture_output=True, text=True).stdout.strip() or 0)
+    if dur > 0:
+        subprocess.run(['ffmpeg', '-nostdin', '-y', '-v', 'error', '-i', video, '-vf',
+                        f'fps={8 / dur:.5f},scale=180:320,tile=8x1:padding=2', '-frames:v', '1', sheet],
+                       stdin=subprocess.DEVNULL)
+    rec = {'date': day, 'video': os.path.abspath(video), 'project': project, 'why': why,
+           'sheet': sheet if os.path.exists(sheet) else None}
+    with open(os.path.join(out_dir, 'approved.jsonl'), 'a', encoding='utf-8') as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + '\n')
+    _log({'date': day, 'text': f'APPROVED {name}' + (f': {why}' if why else ''), 'project': project, 'video': name,
+          'tag': 'other', 'by': 'user'})
+    print('approved ->', rec['sheet'] or rec['video'])
+
+
+def approved(n=5):
+    p = os.path.join(MYSTYLE, 'approved', 'approved.jsonl')
+    if not os.path.exists(p):
+        return []
+    with open(p, encoding='utf-8') as f:
+        return [json.loads(x) for x in f if x.strip()][-n:]
 
 
 def brief():
@@ -178,6 +220,12 @@ def show():
     print('rules:')
     for r in pr.get('rules') or []:
         print('  -', r)
+    ap_ = approved()
+    if ap_:
+        print('approved videos (what "right" looks like - open the sheets before a similar edit):')
+        for x in ap_:
+            print(f"  [{x['date']}] {os.path.basename(x['video'])}" + (f" - {x['why']}" if x.get('why') else '')
+                  + (f"  sheet: {x['sheet']}" if x.get('sheet') else ''))
     es = entries()
     if es:
         print(f'recent feedback ({len(es)} total):')
@@ -308,6 +356,11 @@ def main():
     st.add_argument('value')
     ru = sub.add_parser('rule')
     ru.add_argument('text')
+    ru.add_argument('--why')
+    av = sub.add_parser('approve')
+    av.add_argument('video')
+    av.add_argument('--project')
+    av.add_argument('--why')
     wo = sub.add_parser('word')
     wo.add_argument('asr')
     wo.add_argument('correct')
@@ -328,7 +381,9 @@ def main():
     elif a.cmd == 'set':
         set_pref(a.key, a.value)
     elif a.cmd == 'rule':
-        add_rule(a.text)
+        add_rule(a.text, a.why)
+    elif a.cmd == 'approve':
+        approve(a.video, a.project, a.why)
     elif a.cmd == 'word':
         add_word(a.asr, a.correct)
     elif a.cmd == 'brief':
