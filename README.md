@@ -93,6 +93,7 @@ phỏng vấn lần đầu: `docs/onboarding.md`.
 .claude-plugin/marketplace.json            danh mục plugin (marketplace "hien-video-tools")
 plugins/video-style-editor/
 ├── .claude-plugin/plugin.json
+├── skills/<6 kiểu reels>/SKILL.md         lối tắt /trial-reels, /explainer... (trỏ về skill chính)
 └── skills/video-style-editor/             = nội dung file zip skill
     ├── SKILL.md                           hướng dẫn cho Claude
     ├── scripts/                           vse.py (1 lệnh cho mọi bước) + các bước: prepare, transcribe, audio_events,

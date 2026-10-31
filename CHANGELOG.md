@@ -1,6 +1,9 @@
 # Changelog
 
 ## 2026-10-31
+- Lệnh gọi nhanh `/trial-reels`, `/behind-the-person`, `/explainer`, `/split-screen`, `/ranking-list`, `/storytelling`:
+  6 skill lối tắt trong plugin (`plugins/video-style-editor/skills/<tên>/SKILL.md`) trỏ về skill chính.
+  Hướng dẫn người mới thêm phần dùng nâng cao (lệnh `/`, 6 kiểu reels, my-style, Gemini, cập nhật).
 - **6 bố cục reels** (`vse.py reel`, `reels/`, `docs/reels.md`) từ claude-editing-skills của Artem Novitckii (MIT):
   trial-reels, behind-the-person, explainer, split-screen, ranking-list, storytelling. Chuyển sang chạy trong máy và
   tiếng Việt: chép lời bằng model tiếng Việt cục bộ thay Groq (không cần key), font có dấu, nhãn mặc định tiếng Việt,

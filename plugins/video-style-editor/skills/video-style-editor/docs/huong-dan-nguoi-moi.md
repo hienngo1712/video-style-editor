@@ -223,6 +223,83 @@ Mỗi góp ý được ghi vào `my-style/journal.md`; góp ý lặp lại sẽ 
 | Làm tiếp trong CapCut | `Xuất thêm file phụ đề để tôi chỉnh tiếp trong CapCut.` |
 | Claude dừng giữa chừng | `tiếp tục` |
 
+## Gọi nhanh bằng lệnh `/`
+
+Trong ô nhập tin nhắn của Cowork, gõ dấu **/** (hoặc bấm **+**) để thấy danh sách skill của plugin, chọn rồi gõ tiếp
+yêu cầu. Từ bản 31/10/2026, plugin có 7 lệnh:
+
+| Lệnh | Làm gì |
+|---|---|
+| `/video-style-editor` | Dựng cả video từ bản thô (quy trình bước 8) |
+| `/trial-reels` | Một clip thành 3 bản khác hẳn nhau để đăng thử |
+| `/behind-the-person` | Tách người, đặt đồ hoạ phía sau người |
+| `/explainer` | Người ở dưới, phía trên giải thích trước → sau hoặc danh sách |
+| `/split-screen` | Chia đôi màn hình: minh hoạ trên, người nói dưới |
+| `/ranking-list` | Bảng xếp hạng S → F trên ngực người nói |
+| `/storytelling` | 3 thẻ hình + tiêu đề trên một đoạn quay liền |
+
+Ví dụ: `/explainer clip IMG_1234 trong projects/quan-moi, chọn đoạn hay nhất`. Lệnh hiện dạng có tiền tố
+(`/video-style-editor:explainer`) thì vẫn là nó.
+
+- Không thấy các lệnh mới: **Customize** → **Plugins** → bấm marketplace `hienngo1712/video-style-editor` →
+  **Check for updates**, rồi mở cuộc trò chuyện mới.
+- Cài bằng file zip (cách B) chỉ có lệnh chính. Khi đó cứ nhắn bằng lời: *"Dựng clip IMG_1234 kiểu explainer"*.
+
+## 6 kiểu reels thiết kế sẵn
+
+Mỗi kiểu lấy **một đoạn 3-8 giây nói một ý** trong clip và dựng thành reel 9:16 có đồ hoạ chuyển động, hình và chữ
+hiện đúng lúc người nói nhắc tới. Dựa trên bộ skill của Artem Novitckii (giấy phép MIT), đã chuyển sang tiếng Việt và
+chạy hoàn toàn trên máy bạn. Chi tiết kỹ thuật: `docs/reels.md`.
+
+| Kiểu | Hợp với | Nên chuẩn bị | Prompt mẫu |
+|---|---|---|---|
+| trial-reels | Chưa biết cách đóng gói nào hút view: đăng cả 3, giữ bản giữ chân tốt nhất | Ảnh đại diện (cho bản 2) | `/trial-reels đoạn mở đầu clip IMG_1234` |
+| behind-the-person | Khoe thành quả, số liệu, bài đăng của bạn | Ảnh bài đăng / ảnh chụp số liệu thật | `/behind-the-person clip IMG_1234, ảnh bài đăng trong projects/quan-moi/assets` |
+| explainer | Giải thích một ý, so sánh trước / sau | Không bắt buộc | `/explainer clip IMG_1234, so sánh lúc mới học và bây giờ` |
+| split-screen | Hướng dẫn từng bước, chuỗi video nhiều phần | Ảnh chụp màn hình (tuỳ chọn) | `/split-screen clip IMG_1234 là bước 1, dùng danh sách tích dần` |
+| ranking-list | Xếp hạng, đánh giá nhiều món / sản phẩm | Ảnh các món (tuỳ chọn) | `/ranking-list clip review 5 quán cà phê` |
+| storytelling | Kể một câu chuyện ngắn, khoe bằng chứng | 1-3 ảnh của bạn | `/storytelling clip IMG_1234, 3 thẻ: 4 năm học nghề, ảnh quán, khai trương` |
+
+Dùng hiệu quả:
+
+- **Nói rõ ý muốn làm nổi bật** hoặc để Claude tự chọn đoạn hay nhất. Một đoạn nói hai ý → làm hai reel.
+- **Ảnh riêng** bỏ vào `projects/<tên>/assets/` và nhắc trong prompt. Claude **không bịa** số liệu, bình luận hay tên
+  người: con số phải là thứ trong clip nói hoặc bạn đưa.
+- **Tiêu đề / nhãn** muốn viết thế nào thì ghi luôn trong prompt ("tiêu đề: Học viên ra mở quán").
+- **Thời gian:** reel 7 giây mất 1,5-3 phút; kiểu có tách người lâu hơn. Lần đầu mỗi phiên, Claude tự cài bộ dựng
+  (~30 giây). Thấy CONTINUE thì Claude tự chạy tiếp.
+- **Kết quả** ở `projects/<tên>/output/<clip>.<kiểu>.mp4`, kèm ảnh kiểm tra `.sheet.jpg` (vùng đỏ là chỗ nút TikTok /
+  Instagram che).
+- **Trial-reels:** đăng cả 3 bản cùng ngày, sau 1-2 ngày giữ bản có tỉ lệ xem hết 3 giây đầu cao nhất và báo Claude
+  để ghi vào my-style.
+
+## Dạy Claude khẩu vị của bạn (nâng cao)
+
+Tất cả nằm trong `vse-workspace/my-style/`, áp dụng cho cả video dài lẫn 6 kiểu reels.
+
+| Muốn | Nhắn |
+|---|---|
+| Xem Claude đang hiểu gì về bạn | `Cho tôi xem my-style hiện tại, tóm tắt bằng tiếng Việt` |
+| Thêm quy tắc lâu dài | `Ghi quy tắc vào my-style: phụ đề luôn viết hoa chữ đầu câu` |
+| Cấm một tiếng hiệu ứng | `Ghi vào my-style: cấm tiếng cười giả` |
+| Sửa chính tả cố định | `Ghi vào my-style: luôn viết "phong bvb" thành "Phong BVB"` |
+| Cho Claude học từ bản bạn tự sửa | `Tôi đã sửa plan video-1, học từ chỗ tôi sửa và đề xuất quy tắc` |
+| Học phong cách từ video mẫu | Bỏ 3-10 video mẫu vào `vse-workspace/references/<tên-style>/videos/`, nhắn `Học phong cách từ references/<tên-style> và tạo style mới` |
+| Làm lại từ đầu | `Phỏng vấn lại tôi về phong cách` |
+
+## Nhờ Gemini nghe và chấm video
+
+Claude không nghe được âm thanh. Nếu đã cài Claude in Chrome (bước 3b) và đăng nhập sẵn Gemini trong Chrome, nhắn:
+`Nhờ Gemini nghe bản review của video-1, chấm điểm và ghi các lỗi cần sửa`. Claude tải bản nhẹ lên Gemini, đọc nhận
+xét, kiểm tra từng lỗi rồi sửa. Không có Gemini thì bạn tự nghe và góp ý theo mẫu bước 9.
+
+## Cập nhật skill
+
+- Cài bằng GitHub (cách A) và đã bật **Sync automatically**: tự cập nhật. Muốn lấy ngay: **Customize** → **Plugins** →
+  marketplace → **Check for updates**, rồi mở cuộc trò chuyện mới.
+- Cài bằng file zip (cách B): xoá skill cũ, tải file zip mới lên.
+- Cập nhật không đụng tới `vse-workspace` (my-style, video, kết quả của bạn vẫn giữ nguyên).
+
 ## Dùng tiết kiệm lượt (gói Pro)
 
 Dựng video là việc nặng, tốn lượt sử dụng hơn nhiều so với hỏi đáp. Gói Pro có giới hạn theo khung giờ; xem mức đã
